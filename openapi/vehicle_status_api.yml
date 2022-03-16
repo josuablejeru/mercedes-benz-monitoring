@@ -88,11 +88,12 @@ info:
     closed<br>3: window airing position<br>4: window intermediate airing
     position<br>5: window currently running
   title: Vehicle Status API
-  version: '2.0'
+  version: "2.0"
 servers:
-  - url: 'https://api.mercedes-benz.com/vehicledata/v2'
+  - url: "https://api.mercedes-benz.com/vehicledata_tryout/v2"
+  - url: "https://api.mercedes-benz.com/vehicledata/v2"
 paths:
-  '/vehicles/{vehicleId}/containers/vehiclestatus':
+  "/vehicles/{vehicleId}/containers/vehiclestatus":
     get:
       parameters:
         - description: Vehicle identification number
@@ -102,45 +103,45 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 items:
-                  $ref: '#/components/schemas/VehicleStatus'
+                  $ref: "#/components/schemas/VehicleStatus"
                 type: array
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Container Vehicle Status
@@ -149,7 +150,7 @@ paths:
       summary: >-
         Returns all resources for the provided 'vehiclestatus', data can be
         filtered for a certain time range.
-  '/vehicles/{vehicleId}/resources':
+  "/vehicles/{vehicleId}/resources":
     get:
       parameters:
         - description: Vehicle identification number
@@ -159,45 +160,45 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 items:
-                  $ref: '#/components/schemas/ResourceMetaInfo'
+                  $ref: "#/components/schemas/ResourceMetaInfo"
                 type: array
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Resources
@@ -206,7 +207,7 @@ paths:
       summary: >-
         Returns all available resources for the provided vehicle identification
         number.
-  '/vehicles/{vehicleId}/resources/decklidstatus':
+  "/vehicles/{vehicleId}/resources/decklidstatus":
     get:
       parameters:
         - description: Vehicle identification number
@@ -216,46 +217,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   decklidstatus:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Decklid resource
@@ -264,7 +265,7 @@ paths:
       summary: >-
         Returns the latest available resource for the decklid status and vehicle
         identification number.
-  '/vehicles/{vehicleId}/resources/doorstatusfrontleft':
+  "/vehicles/{vehicleId}/resources/doorstatusfrontleft":
     get:
       parameters:
         - description: Vehicle identification number
@@ -274,46 +275,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   doorstatusfrontleft:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Front left door resource
@@ -322,7 +323,7 @@ paths:
       summary: >-
         Returns the latest available resource for the front left door status and
         vehicle identification number.
-  '/vehicles/{vehicleId}/resources/doorstatusfrontright':
+  "/vehicles/{vehicleId}/resources/doorstatusfrontright":
     get:
       parameters:
         - description: Vehicle identification number
@@ -332,46 +333,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   doorstatusfrontright:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Front right door resource
@@ -380,7 +381,7 @@ paths:
       summary: >-
         Returns the latest available resource for the front right door status
         and vehicle identification number.
-  '/vehicles/{vehicleId}/resources/doorstatusrearleft':
+  "/vehicles/{vehicleId}/resources/doorstatusrearleft":
     get:
       parameters:
         - description: Vehicle identification number
@@ -390,46 +391,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   doorstatusrearleft:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Rear left door resource
@@ -438,7 +439,7 @@ paths:
       summary: >-
         Returns the latest available resource for the rear left door status and
         vehicle identification number.
-  '/vehicles/{vehicleId}/resources/doorstatusrearright':
+  "/vehicles/{vehicleId}/resources/doorstatusrearright":
     get:
       parameters:
         - description: Vehicle identification number
@@ -448,46 +449,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   doorstatusrearright:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Rear right door resource
@@ -496,7 +497,7 @@ paths:
       summary: >-
         Returns the latest available resource for the rear right door status and
         vehicle identification number.
-  '/vehicles/{vehicleId}/resources/interiorLightsFront':
+  "/vehicles/{vehicleId}/resources/interiorLightsFront":
     get:
       parameters:
         - description: Vehicle identification number
@@ -506,46 +507,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   interiorLightsFront:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Interior front light resource
@@ -554,7 +555,7 @@ paths:
       summary: >-
         Returns the latest available resource for the interior front lights and
         vehicle identification number.
-  '/vehicles/{vehicleId}/resources/interiorLightsRear':
+  "/vehicles/{vehicleId}/resources/interiorLightsRear":
     get:
       parameters:
         - description: Vehicle identification number
@@ -564,46 +565,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   interiorLightsRear:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Interior rear light resource
@@ -612,7 +613,7 @@ paths:
       summary: >-
         Returns the latest available resource for the interior rear lights and
         vehicle identification number.
-  '/vehicles/{vehicleId}/resources/lightswitchposition':
+  "/vehicles/{vehicleId}/resources/lightswitchposition":
     get:
       parameters:
         - description: Vehicle identification number
@@ -622,46 +623,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   lightswitchposition:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Light switch position resource
@@ -670,7 +671,7 @@ paths:
       summary: >-
         Returns the latest available resource for the light switch position and
         vehicle identification number.
-  '/vehicles/{vehicleId}/resources/readingLampFrontLeft':
+  "/vehicles/{vehicleId}/resources/readingLampFrontLeft":
     get:
       parameters:
         - description: Vehicle identification number
@@ -680,46 +681,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   readingLampFrontLeft:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Front left reading lamp resource
@@ -728,7 +729,7 @@ paths:
       summary: >-
         Returns the latest available resource for the front left reading lamp
         and vehicle identification number.
-  '/vehicles/{vehicleId}/resources/readingLampFrontRight':
+  "/vehicles/{vehicleId}/resources/readingLampFrontRight":
     get:
       parameters:
         - description: Vehicle identification number
@@ -738,46 +739,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   readingLampFrontRight:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Front right reading lamp resource
@@ -786,7 +787,7 @@ paths:
       summary: >-
         Returns the latest available resource for the front right reading lamp
         and vehicle identification number.
-  '/vehicles/{vehicleId}/resources/rooftopstatus':
+  "/vehicles/{vehicleId}/resources/rooftopstatus":
     get:
       parameters:
         - description: Vehicle identification number
@@ -796,46 +797,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   rooftopstatus:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Convertible (roof top) resource
@@ -844,7 +845,7 @@ paths:
       summary: >-
         Returns the latest available resource for the convertible and vehicle
         identification number.
-  '/vehicles/{vehicleId}/resources/sunroofstatus':
+  "/vehicles/{vehicleId}/resources/sunroofstatus":
     get:
       parameters:
         - description: Vehicle identification number
@@ -854,46 +855,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   sunroofstatus:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Sunroof resource
@@ -902,7 +903,7 @@ paths:
       summary: >-
         Returns the latest available resource for the sunroof and vehicle
         identification number.
-  '/vehicles/{vehicleId}/resources/windowstatusfrontleft':
+  "/vehicles/{vehicleId}/resources/windowstatusfrontleft":
     get:
       parameters:
         - description: Vehicle identification number
@@ -912,46 +913,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   windowstatusfrontleft:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Front left windows resource
@@ -960,7 +961,7 @@ paths:
       summary: >-
         Returns the latest available resource for the front left window status
         and vehicle identification number.
-  '/vehicles/{vehicleId}/resources/windowstatusfrontright':
+  "/vehicles/{vehicleId}/resources/windowstatusfrontright":
     get:
       parameters:
         - description: Vehicle identification number
@@ -970,46 +971,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   windowstatusfrontright:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Front right windows resource
@@ -1018,7 +1019,7 @@ paths:
       summary: >-
         Returns the latest available resource for the front right window status
         and vehicle identification number.
-  '/vehicles/{vehicleId}/resources/windowstatusrearleft':
+  "/vehicles/{vehicleId}/resources/windowstatusrearleft":
     get:
       parameters:
         - description: Vehicle identification number
@@ -1028,46 +1029,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   windowstatusrearleft:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Rear left windows resource
@@ -1076,7 +1077,7 @@ paths:
       summary: >-
         Returns the latest available resource for the rear left window status
         and vehicle identification number.
-  '/vehicles/{vehicleId}/resources/windowstatusrearright':
+  "/vehicles/{vehicleId}/resources/windowstatusrearright":
     get:
       parameters:
         - description: Vehicle identification number
@@ -1086,46 +1087,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   windowstatusrearright:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Rear right windows resource
@@ -1167,51 +1168,51 @@ components:
     VehicleStatus:
       properties:
         decklidstatus:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         doorstatusfrontleft:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         doorstatusfrontright:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         doorstatusrearleft:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         doorstatusrearright:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         interiorLightsFront:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         interiorLightsRear:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         lightswitchposition:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         readingLampFrontLeft:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         readingLampFrontRight:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         rooftopstatus:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         sunroofstatus:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         windowstatusfrontleft:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         windowstatusfrontright:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         windowstatusrearleft:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
         windowstatusrearright:
-          $ref: '#/components/schemas/Resource'
+          $ref: "#/components/schemas/Resource"
       title: VehicleStatus
       type: object
   securitySchemes:
     OAuth2:
       flows:
         authorizationCode:
-          authorizationUrl: 'https://id.mercedes-benz.com/as/authorization.oauth2'
+          authorizationUrl: "https://id.mercedes-benz.com/as/authorization.oauth2"
           scopes:
-            'mb:vehicle:mbdata:vehiclestatus': Grant vehicle status access
-          tokenUrl: 'https://id.mercedes-benz.com/as/token.oauth2'
+            "mb:vehicle:mbdata:vehiclestatus": Grant vehicle status access
+          tokenUrl: "https://id.mercedes-benz.com/as/token.oauth2"
       type: oauth2
 security:
   - OAuth2:
-      - 'mb:vehicle:mbdata:vehiclestatus'
+      - "mb:vehicle:mbdata:vehiclestatus"
 tags:
   - description: Vehicle Status service for view all Vehicle Status vehicle data points
     name: Container Vehicle Status
@@ -1249,4 +1250,3 @@ tags:
     name: Rear left windows resource
   - description: Vehicle Status service for view rear right windows resource
     name: Rear right windows resource
-

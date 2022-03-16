@@ -32,11 +32,12 @@ info:
 
     odo | Odometer | 0..999999 km
   title: Pay As You Drive Insurance API
-  version: '2.0'
+  version: "2.0"
 servers:
-  - url: 'https://api.mercedes-benz.com/vehicledata/v2'
+  - url: "https://api.mercedes-benz.com/vehicledata_tryout/v2"
+  - url: "https://api.mercedes-benz.com/vehicledata/v2"
 paths:
-  '/vehicles/{vehicleId}/containers/payasyoudrive':
+  "/vehicles/{vehicleId}/containers/payasyoudrive":
     get:
       parameters:
         - description: Vehicle identification number
@@ -46,48 +47,48 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 items:
                   properties:
                     odo:
-                      $ref: '#/components/schemas/Resource'
+                      $ref: "#/components/schemas/Resource"
                   type: object
                 type: array
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Container Pay As You Drive Insurance
@@ -96,7 +97,7 @@ paths:
       summary: >-
         Returns all resources for the container 'insurance', data can be
         filtered for a certain time range.
-  '/vehicles/{vehicleId}/resources':
+  "/vehicles/{vehicleId}/resources":
     get:
       parameters:
         - description: Vehicle identification number
@@ -106,45 +107,45 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 items:
-                  $ref: '#/components/schemas/ResourceMetaInfo'
+                  $ref: "#/components/schemas/ResourceMetaInfo"
                 type: array
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Resources
@@ -153,7 +154,7 @@ paths:
       summary: >-
         Returns all available resources for the provided vehicle identification
         number.
-  '/vehicles/{vehicleId}/resources/odo':
+  "/vehicles/{vehicleId}/resources/odo":
     get:
       parameters:
         - description: Vehicle identification number
@@ -163,46 +164,46 @@ paths:
           schema:
             type: string
       responses:
-        '200':
+        "200":
           content:
             application/json;charset=utf-8:
               schema:
                 properties:
                   odo:
-                    $ref: '#/components/schemas/Resource'
+                    $ref: "#/components/schemas/Resource"
                 type: object
           description: OK
-        '204':
+        "204":
           description: No data available
-        '400':
+        "400":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Bad Request
-        '401':
+        "401":
           description: Unauthorized
-        '403':
+        "403":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Forbidden
-        '404':
+        "404":
           description: Resource not Found
-        '429':
+        "429":
           description: The service received too many requests in a given amount of time.
-        '500':
+        "500":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Internal Server Error
-        '503':
+        "503":
           content:
             application/json;charset=utf-8:
               schema:
-                $ref: '#/components/schemas/ExVeError'
+                $ref: "#/components/schemas/ExVeError"
           description: Service Unavailable
       tags:
         - Odometer resource
@@ -245,14 +246,14 @@ components:
     OAuth2:
       flows:
         authorizationCode:
-          authorizationUrl: 'https://id.mercedes-benz.com/as/authorization.oauth2'
+          authorizationUrl: "https://id.mercedes-benz.com/as/authorization.oauth2"
           scopes:
-            'mb:vehicle:mbdata:payasyoudrive': Grant odometer access
-          tokenUrl: 'https://id.mercedes-benz.com/as/token.oauth2'
+            "mb:vehicle:mbdata:payasyoudrive": Grant odometer access
+          tokenUrl: "https://id.mercedes-benz.com/as/token.oauth2"
       type: oauth2
 security:
   - OAuth2:
-      - 'mb:vehicle:mbdata:payasyoudrive'
+      - "mb:vehicle:mbdata:payasyoudrive"
 tags:
   - description: >-
       Pay As You Drive Insurance service for view all Pay As You Drive Insurance
@@ -262,4 +263,3 @@ tags:
     name: Resources
   - description: Pay As You Drive Insurance service for view odometer resource
     name: Odometer resource
-
