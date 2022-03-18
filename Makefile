@@ -1,2 +1,2 @@
 gen:
-	oapi-codegen -package mbclient ./openapi/fuel_status_api.yml > client/fuel.go
+	oapi-codegen -generate types,client -package client ./openapi/fuel_status_api.yml > client/fuel.go
