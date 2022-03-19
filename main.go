@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 
 	"github.com/josuablejeru/mercedes-benz-monitoring/client"
@@ -26,5 +27,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Println(result)
+	fmt.Println(result[1].Rangeliquid.Value)
 }

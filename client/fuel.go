@@ -2,12 +2,24 @@ package client
 
 import (
 	"context"
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
 
-func (c *CarAPI) GetFuelLevel(ctx context.Context) (string, error) {
+type GetFuelLevelResp []struct {
+	Tanklevelpercent struct {
+		Value     string `json:"value"`
+		Timestamp int64  `json:"timestamp"`
+	} `json:"tanklevelpercent,omitempty"`
+	Rangeliquid struct {
+		Value     string `json:"value"`
+		Timestamp int64  `json:"timestamp"`
+	} `json:"rangeliquid,omitempty"`
+}
+
+func (c *CarAPI) GetFuelLevel(ctx context.Context) (GetFuelLevelResp, error) {
 	url := c.GetBaseURL() + "/containers/fuelstatus"
 	bearer := "Bearer " + c.BaererToken
 
@@ -25,10 +37,9 @@ func (c *CarAPI) GetFuelLevel(ctx context.Context) (string, error) {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
+	d, _ := ioutil.ReadAll(resp.Body)
+	returnData := GetFuelLevelResp{}
+	json.Unmarshal(d, &returnData)
 
-	return string(body), nil
+	return returnData, nil
 }
