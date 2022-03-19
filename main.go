@@ -2,22 +2,33 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
+	"os"
+	"strconv"
 
-	"github.com/josuablejeru/mercedes-benz-monitoring/client"
+	"github.com/joho/godotenv"
+	mbclient "github.com/josuablejeru/mercedes-benz-monitoring/mbclient"
+	"github.com/josuablejeru/mercedes-benz-monitoring/timedb"
 )
 
-const (
-	vehicleId = "WDB111111ZZZ22222"                                             // example ID
-	serverURL = "https://api.mercedes-benz.com/vehicledata_tryout/v2/vehicles/" // Playground URL
+var (
+	influxToken     string
+	vehicleId       string
+	mbServerURL     string
+	timeDBServerURL string
 )
 
 func main() {
+	loadEnv()
 	ctx := context.Background()
 
+	influxToken = os.Getenv("INFLUXDB_BUCKET_TOKEN")
+	vehicleId = os.Getenv("VEHICLE_ID")
+	mbServerURL = os.Getenv("SERVER_URL")
+	timeDBServerURL = os.Getenv("INFLUXDB_SERVER_URL")
+
 	// Create a new client
-	carApi, err := client.NewCarAPI(vehicleId, serverURL, "7c7c777c-f123-4123-s123-7c7c777c7c77")
+	carApi, err := mbclient.NewCarAPI(vehicleId, mbServerURL, "7c7c777c-f123-4123-s123-7c7c777c7c77")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -27,5 +38,15 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(result[1].Rangeliquid.Value)
+	// Write to TimeDB
+	timeclient, _ := timedb.New(timeDBServerURL, influxToken)
+	intValue, _ := strconv.ParseInt(result[1].Rangeliquid.Value, 10, 64)
+	timeclient.WriteFuelLevel(intValue)
+}
+
+func loadEnv() {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
 }
