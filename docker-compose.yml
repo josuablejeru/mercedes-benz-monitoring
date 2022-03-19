@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+  influxdb:
+    # https://hub.docker.com/r/bitnami/influxdb
+    image: bitnami/influxdb:latest
+    ports:
+      - 8086:8086
+      - 8088:8088
+    environment:
+      - INFLUXDB_ADMIN_USER_PASSWORD=adminpassword
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_USER_TOKEN=adminToken123
+      - INFLUXDB_USER_BUCKET=mercedes-car
+      - INFLUXDB_USER=mercedes
+      - INFLUXDB_USER_PASSWORD=mercedespassword
+    volumes:
+      - influxdb_data:/bitnami/influxdb
+volumes:
+  influxdb_data:
+    driver: local
